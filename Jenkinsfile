@@ -1,23 +1,21 @@
 pipeline {
-    agent { dockerfile true }
+    agent {
+        docker {
+            image 'otus_project_10'
+        }
+    }
 
     stages {
-
-    stage('Move to working dir') {
-			steps {
-				sh 'cd Users/carina/Desktop/Jenkins_Home/workspace/otus_test_job2'
-			}
-		}
-        stage('Test GitHub Api') {
+        stage('Build') {
             steps {
                 sh 'docker build -t my_otus_project_10 .'
             }
         }
-
-        stage('Run Tests') {
-			steps {
-				sh 'docker run my_otus_project_10'
-			}
+        stage('Test') {
+            steps {
+                sh 'docker run my_otus_project_10'
+            }
         }
+
     }
 }
