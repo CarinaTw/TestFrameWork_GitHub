@@ -5,7 +5,7 @@ pipeline {
 
     stage('Move to working dir') {
 			steps {
-				sh 'cd /var/jenkins_home/workspace/first_pipeline'
+				sh 'cd /var/jenkins_home/workspace/otus_test_job2'
 			}
 		}
         stage('Test GitHub Api') {
